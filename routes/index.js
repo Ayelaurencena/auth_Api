@@ -12,8 +12,6 @@ router.post("/api/login", passport.authenticate("local"), function(req, res, nex
 })
 
 router.get("/api/verify", function(req, res, next) {
-  res.json({
-    ok: true
-  })
+  return res.json(req.user);
 })
 module.exports = router;
