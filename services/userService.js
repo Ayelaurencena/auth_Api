@@ -5,6 +5,16 @@ class UserService {
     const query = await User.findOne({ name }).exec();
     return query;
   }
-}
 
-module.exports = UserService;
+    createUser(data) {
+     bcrypt.hash(data.password, 10).then(hash => {
+     data.password = hash;
+     const newUser = new User(data);
+     return newUser.save();
+     });
+    }
+    }
+
+
+    module.exports = UserService;
+
